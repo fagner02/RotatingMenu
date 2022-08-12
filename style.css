@@ -1,0 +1,38 @@
+html,
+body {
+  margin: 0;
+}
+
+:root {
+  --angle: 45deg;
+}
+
+.box {
+  position: relative;
+  top: 50vh;
+  left: 50vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.rotate-box {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 200px;
+  height: 200px;
+  transform: rotateZ(var(--angle));
+  transform-origin: top left;
+}
+
+.block {
+  background-color: blueviolet;
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  transform: rotateZ(calc(0deg - var(--angle))) skewX(4px);
+  filter: blur(5px);
+}
