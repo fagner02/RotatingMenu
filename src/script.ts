@@ -19,6 +19,12 @@ function start() {
     rotate.appendChild(block);
     rotate.style.transform = `rotate(${angle}deg)`;
 
+    let half = Math.floor(elementNum / 2) + 1;
+    let blur = i >= half ? elementNum - i : i;
+    blur %= half;
+    blur *= 5;
+    block.style.filter = `blur(${blur}px)`;
+
     (<HTMLElement>document.querySelector(".box")).appendChild(rotate);
     setupEventListeners(rotate);
   }
@@ -45,6 +51,8 @@ function setupEventListeners(rotate: HTMLElement) {
       let right = 360 - (Math.abs(oldAngle) - targetAngle);
       let direction = Math.abs(left) < Math.abs(right) ? left : right;
       let pos = 0;
+      let half = Math.floor(elementNum / 2) + 1;
+
       do {
         oldAngle = parseFloat(element.style.transform.replace("rotate(", ""));
         let angle = oldAngle + direction;
@@ -57,7 +65,10 @@ function setupEventListeners(rotate: HTMLElement) {
         element.style.transform = `rotate(${angle}deg)`;
         child.style.transform = `rotate(${-angle}deg)`;
 
-        // child.style.filter = `blur(${pos}px)`;
+        let blur = pos >= half ? elementNum - pos : pos;
+        blur %= half;
+        blur *= 5;
+        child.style.filter = `blur(${blur}px)`;
 
         let timeout = setTimeout(
           function (
