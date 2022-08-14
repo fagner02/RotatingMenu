@@ -3,10 +3,6 @@ body {
   margin: 0;
 }
 
-:root {
-  --angle: 45deg;
-}
-
 .box {
   position: relative;
   top: 50vh;
@@ -24,7 +20,6 @@ body {
   align-items: flex-end;
   width: 200px;
   height: 200px;
-  transform: rotateZ(var(--angle));
   transform-origin: top left;
 }
 
@@ -33,6 +28,5 @@ body {
   border-radius: 10px;
   width: 100px;
   height: 100px;
-  transform: rotateZ(calc(0deg - var(--angle))) skewX(4px);
   filter: blur(5px);
 }
